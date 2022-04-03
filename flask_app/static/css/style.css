@@ -1,0 +1,39 @@
+#comments{
+    display: flex;
+    vertical-align:text-bottom;
+    margin: 10px auto;
+}
+
+.bigcontainer{
+    display: flex;
+}
+
+.left{
+    display: flex;
+    justify-content: space-between;
+}
+
+.delete{
+    color:tomato;
+    margin-bottom: 20px;
+    font-size: small;
+}
+
+#commentsbox{
+
+    
+}
+
+.row{
+    
+    margin: 5px;
+}
+.center{ 
+   
+    text-align: center;
+}
+
+.color{
+    color:brown;
+}
+
