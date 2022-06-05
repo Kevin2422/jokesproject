@@ -25,9 +25,9 @@ def homepage():
 @app.route('/process', methods = ['POST'])
 def process_user():
     if request.form['password']:
-        print(request.form)
+       
         pw_hash = bcrypt.generate_password_hash(request.form['password'])
-        print(pw_hash)
+       
         data = {
             'fname': request.form['fname'],
             'lname': request.form['lname'],
@@ -82,7 +82,7 @@ def logout():
 def login():
     data = { "email" : request.form["email"] }
     user_in_db = User.get_by_email(data)
-    print(user_in_db)
+    
     if not user_in_db:
         flash("Invalid Email/Password")
         return redirect("/")
@@ -112,7 +112,7 @@ def getjoke():
         response = urllib.request.urlopen(url)
         data = response.read()
         dict = json.loads(data)
-        print(dict)
+        
         if dict['type'] == 'single':
             joke = dict['joke']
             index = 0
@@ -129,7 +129,7 @@ def getjoke():
             if Joke.isUnique(data):
                 Joke.insert_joke(data)
             ajoke = Joke.getone(data)
-            print("singleaef", ajoke.id)
+         
             if 'id' in session:
                 id = session['id']
             if 'id' not in session:
@@ -153,7 +153,7 @@ def getjoke():
             if Joke.isUnique(data):
                 Joke.insert_joke(data)
             ajoke = Joke.getone(data)
-            print("doublefawefaw", ajoke.id)
+           
             if 'id' in session:
                 id = session['id']
             if 'id' not in session:
@@ -169,7 +169,7 @@ def getjoke():
             'id': id
         }
         ajoke = Joke.getoneid(data)
-        print('triple')
+       
         if 'id' in session:
             id = session['id']
         if 'id' not in session:
@@ -224,7 +224,7 @@ def showallfaves(id):
         ids = session['id']
     if 'id' not in session:
         ids = ''
-    print(ids)
+    
     return render_template('view_favorites.html',user = user, ids= ids)
 
 @app.route('/delete/<int:id>')
@@ -253,7 +253,7 @@ def viewall(pg):
     jokes = Joke.viewalljokes()
     newlist = []
     numpages = ceil(len(jokes)/50)
-    print(numpages)
+
     if 'id' in session:
         ids = session['id']
     if 'id' not in session:
@@ -289,7 +289,7 @@ def submitjoke(id):
         if x == '%':
             joke = f"{joke[:index]}%{joke[index:]}"
             index =index+1
-        print(joke)
+       
     data = {
         'user_id': id,
         'content': joke
@@ -341,7 +341,7 @@ def viewallsearc(pg):
     jokes = Joke.searchforjokes(data)
     newlist = []
     numpages = ceil(len(jokes)/50)
-    print(numpages)
+   
     if pg<1:
         
         return redirect('/viewpage/1')

@@ -47,7 +47,7 @@ class User:
     def userfaves(cls,data):
         query = 'SELECT * FROM users LEFT JOIN favorites on favorites.user_id = users.id LEFT JOIN jokes on favorites.joke_id = jokes.id WHERE users.id = %(id)s'
         result = connectToMySQL(cls.dbname).query_db(query, data)
-        print(result)
+    
         user = cls(result[0])
         if len(result) == 0:
             return False
@@ -60,7 +60,7 @@ class User:
                 'content': row['content']
             }
             user.jokes.append(joke.Joke(jokes_data))
-        print(user)
+        
         return user
     @classmethod
     def deletefaves(cls,data):
@@ -70,7 +70,7 @@ class User:
     def getusersandcomments(cls,data):
         query = 'SELECT * FROM comments JOIN users on users.id = comments.user_id WHERE joke_id = %(id)s '
         result = connectToMySQL(cls.dbname).query_db(query, data)
-        print('whatthe', result)
+  
         if len(result) == 0:
             return []
         if result[0]['content'] == None:
@@ -96,7 +96,7 @@ class User:
             acomment = comment.Comment(comment_data)
             auser.comments = acomment
             userlist.append(auser)
-        print(userlist)
+    
         return userlist
 
     

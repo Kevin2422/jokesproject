@@ -33,13 +33,13 @@ class Joke:
     def getone(cls, data):
         query = 'SELECT * FROM jokes WHERE content = %(content)s'
         result = connectToMySQL(cls.dbname).query_db(query, data)
-        print(result)
+
         return cls(result[0])
     @classmethod
     def getoneid(cls, data):
         query = 'SELECT * FROM jokes JOIN users ON jokes.user_id =users.id WHERE jokes.id = %(id)s'
         result = connectToMySQL(cls.dbname).query_db(query, data)
-        print(result)
+      
         joke = cls(result[0])
         user_data = {
         "id" : result[0]['users.id'],
@@ -62,7 +62,7 @@ class Joke:
     def favorite_exists(cls,data):
         query = 'SELECT * FROM favorites WHERE user_id = %(user_id)s && joke_id = %(joke_id)s'
         result = connectToMySQL(cls.dbname).query_db(query, data)
-        print(result)
+     
         if len(result)<1:
             return False
         else:
@@ -71,7 +71,7 @@ class Joke:
     def usersfavorited(cls,data):
         query = 'SELECT * FROM jokes JOIN favorites on favorites.joke_id = jokes.id LEFT JOIN users on favorites.user_id = users.id WHERE jokes.id = %(id)s'
         result = connectToMySQL(cls.dbname).query_db(query, data)
-        print(result)
+        
         if len(result) == 0:
             return False
         joke = cls(result[0])
@@ -144,7 +144,7 @@ class Joke:
                 'content': row['content']
             }
             jokes.append(cls(joke_data))
-        print(jokes)
+        
         return jokes
     @classmethod
     def deljoke(cls,data):
@@ -156,8 +156,7 @@ class Joke:
         result = connectToMySQL(cls.dbname).query_db(query,data)
     @staticmethod
     def validateform(data):
-        print(data)
-        print(len(data))
+        
         if len(data)<3:
             flash('Submission must be 3 characters or more')
             return False
