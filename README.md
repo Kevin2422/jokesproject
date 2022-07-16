@@ -1,4 +1,4 @@
-# jokesproject
+# Joke website
 Joke creating/sharing app made with Python and Flask
 
 # Technologies used
