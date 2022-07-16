@@ -1,5 +1,5 @@
 # Joke website
-Joke creating/sharing app made with Python and Flask
+Joke creating/sharing app made with Python and Flask. Jokes taken from API data here - [JokeAPI] (https://sv443.net/jokeapi/v2/)
 
 # Technologies used
 - Python 
@@ -7,6 +7,7 @@ Joke creating/sharing app made with Python and Flask
 - MySql
 - Bootstrap
 - HTML/CSS
+
 
 # Screenshots
 
