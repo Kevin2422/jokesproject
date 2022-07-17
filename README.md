@@ -10,7 +10,7 @@ Joke creating/sharing app made with Python and Flask. Jokes taken from API data 
 
 # Features
 - Login/Register using Bcrypt to hash passwords and store them into the database
-- You are able to favorite and search for joke submissions, favorited jokes stay on their profile so they are able to keep track of the jokes you like the most
+- Users are able to favorite and search for joke submissions, favorited jokes stay on their profile so they are able to keep track of the jokes they like the most
 - Users can also see other users' profiles, inclusing their joke submissions and favorited jokes
 
 
